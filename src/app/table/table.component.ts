@@ -17,10 +17,11 @@ export class TableComponent implements OnInit {
   products!: Product[];
   customers!: Customer[];
   customerSupport = [];
-  orders!: Order[];
+  customerSelected: any;
+  customerRow = false;
   shoppers: any;
+  orders!: Order[];
   isSubmitted = false;
-  customerSelected = false;
 
   constructor(private ApiService: ApiService, private http: HttpClient, private formBuilder: FormBuilder) {
     this.items = this.ApiService.products$;
@@ -47,8 +48,8 @@ export class TableComponent implements OnInit {
   }
 
   getCustomersFromService() {
-    this.ApiService.getCustomers().subscribe(customers =>
-      this.customers = customers
+    this.ApiService.getCustomers().subscribe(resp =>
+      this.customers = resp
     );
 
     return this.form.get('shoppers');
@@ -71,12 +72,12 @@ export class TableComponent implements OnInit {
   }
 
   changeCustomer(e: any) {
-    console.log(e);
-
     this.shoppers.setValue(e.target.value, {
       onlySelf: false
     })
+  }
 
-    this.customerSelected = true;
+  showValuePromptText(customerSelected: any) {
+    console.log('show customerSelected:', customerSelected);
   }
 }

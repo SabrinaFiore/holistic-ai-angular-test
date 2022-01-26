@@ -1,0 +1,55 @@
+/* Table component */
+
+.hero {
+  padding: 1rem;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.form-label,
+.form-select {
+  margin-right: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+.form-button {
+  display: inline-block;
+  margin: 0;
+  padding: 0.5rem;
+	border: 0;
+	border-radius: 0.25rem;
+	background-color: rgb(91, 161, 82);
+	color: #fff;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 0.75rem;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.table {
+  margin-top: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+.table-content {
+  padding-bottom: 0.25rem;
+}
+
+.cell {
+  padding: 0 2rem 0.5rem;
+}
+
+th {
+  display: table-cell;
+  vertical-align: none;
+  font-weight: bold;
+  text-align: unset;
+}
