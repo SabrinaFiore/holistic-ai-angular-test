@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../data/product';
 import { Customer } from './customer';
 import { Order } from './order';
-import { retry } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -20,19 +20,19 @@ export class ApiService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.products).pipe(
-      retry(2),
+      tap(data => data),
     )
   }
 
   getCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.customers).pipe(
-      retry(2),
+      tap(data => data),
     )
   }
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.orders).pipe(
-      retry(2),
+      tap(data => data),
     )
   }
 }

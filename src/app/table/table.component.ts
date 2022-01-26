@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
   items: any;
   products!: Product[];
   customers!: Customer[];
+  customerSupport = [];
   orders!: Order[];
   shoppers: any;
   isSubmitted = false;

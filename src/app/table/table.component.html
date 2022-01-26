@@ -26,8 +26,8 @@
     <th>Order Date</th>
     <th>Product Name</th>
   </thead>
-  <tbody>
-    <!-- 1. TODO display a list of orders here. *ngIf="customerNameSelected" -->
+  <tbody *ngIf="!customerSelected">
+    <!-- 1. TODO display a list of orders here. -->
     <tr>
       <td>
         <!-- ORDER ID: -->
