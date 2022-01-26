@@ -66,7 +66,6 @@ export class TableComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     } else {
-      alert(JSON.stringify(this.form.value))
       return;
     }
   }

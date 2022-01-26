@@ -20,7 +20,7 @@ export class ApiService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.products).pipe(
-      tap(data => data),
+      tap(data => data)
     )
   }
 

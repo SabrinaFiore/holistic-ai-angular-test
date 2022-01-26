@@ -8,8 +8,8 @@ export function createCustomerData(): Customer[] {
     { id: 1, name: 'Maria Anders' },
     { id: 2, name: 'Ana Trujillo' },
     { id: 3, name: 'Thomas Hardy' },
-    { id: 3, name: '' },
-    { id: 3, name: '' },
-    { id: 3, name: '' },
+    { id: 4, name: 'Dave Williams' },
+    { id: 5, name: 'Alice Smith' },
+    { id: 6, name: '' },
   ];
 }

@@ -1,7 +1,6 @@
 <section class="hero">
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <label class="form-label" for="Customers">Customers</label>
-
     <select class="form-select" formControlName="shoppers" id="shoppers"
       [(ngModel)]="customerSelected"
       (ngModelChange)="showValuePromptText(customerSelected)"
@@ -17,45 +16,76 @@
     </select>
 
     <!-- error block -->
-    <div class="invalid-feedback" *ngIf="isSubmitted && shoppers.errors?.required">
+    <div class="form-error" *ngIf="isSubmitted && shoppers.errors?.required">
       <sup>*</sup>Please enter customers
     </div>
 
     <button type="submit" class="form-button">Submit</button>
   </form>
 
-  <table class="table">
-    <thead>
-      <th class="cell">Order Id</th>
-      <th class="cell">Customer Name</th>
-      <th class="cell">Order Date</th>
-      <th class="cell">Product Name</th>
-    </thead>
-    <tbody>
-      <!-- 1. TODO display a list of orders here. -->
-        <tr>
-          <td class="cell">
-            <!-- ORDER ID: -->
-            <div class="table-content" *ngFor="let order of orders">{{ order.id }}</div>
-          </td>
-          <td class="cell">
-            <!-- CUSTOMER NAME: -->
-            <div class="table-content" *ngFor="let customer of customers; let i = index">
-              <ng-container *ngIf="customer.name; else emptyTemplate">
-                <p>{{ i }} - {{ customer.name }}</p>
-              </ng-container>
-              <ng-template #emptyTemplate>&nbsp;</ng-template>
-            </div>
-          </td>
-          <td class="cell">
-            <!-- ORDER DATE: -->
-            <div class="table-content" *ngFor="let order of orders">{{ order.date | date:'dd/MM/yyyy' }}</div>
-          </td>
-          <td class="cell">
-            <!-- PRODUCT NAME: -->
-            <div class="table-content" *ngFor="let product of products">{{ product.name }}</div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+  <ng-container *ngIf="customerSelected; else default">
+    <table class="table">
+      <thead>
+        <th class="cell">Order Id</th>
+        <th class="cell">Customer Name</th>
+        <th class="cell">Order Date</th>
+        <th class="cell">Product Name</th>
+      </thead>
+      <tbody>
+        <!-- 1. TODO display a list of orders here. -->
+          <tr>
+            <td class="cell">
+              <!-- ORDER ID: -->
+              <div class="table-content" *ngFor="let order of orders">{{ order.id }}</div>
+            </td>
+            <td class="cell">
+              <!-- CUSTOMER NAME: -->
+              <div class="table-content" *ngFor="let customer of customers; let i = index">{{ customerSelected }}</div>
+            </td>
+            <td class="cell">
+              <!-- ORDER DATE: -->
+              <div class="table-content" *ngFor="let order of orders">{{ order.date | date:'dd/MM/yyyy' }}</div>
+            </td>
+            <td class="cell">
+              <!-- PRODUCT NAME: -->
+              <div class="table-content" *ngFor="let product of products; let i = index"> {{ product.name }}</div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #default>
+    <table class="table">
+      <thead>
+        <th class="cell">Order Id</th>
+        <th class="cell">Customer Name</th>
+        <th class="cell">Order Date</th>
+        <th class="cell">Product Name</th>
+      </thead>
+      <tbody>
+        <!-- 1. TODO display a list of orders here. -->
+          <tr>
+            <td class="cell">
+              <!-- ORDER ID: -->
+              <div class="table-content" *ngFor="let order of orders">{{ order.id }}</div>
+            </td>
+            <td class="cell">
+              <!-- CUSTOMER NAME: -->
+              <div class="table-content" *ngFor="let customer of customers; let i = index">
+                <ng-container *ngIf="customer.name; else emptyTemplate">{{ customer.name }}</ng-container>
+                <ng-template #emptyTemplate>&nbsp;</ng-template>
+              </div>
+            </td>
+            <td class="cell">
+              <!-- ORDER DATE: -->
+              <div class="table-content" *ngFor="let order of orders">{{ order.date | date:'dd/MM/yyyy' }}</div>
+            </td>
+            <td class="cell">
+              <!-- PRODUCT NAME: -->
+              <div class="table-content" *ngFor="let product of products">{{ product.name }}</div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </ng-template>
 </section>
